@@ -4,18 +4,22 @@ class SinhVien:
         self._ten = ten
         self._gioi_tinh = gioi_tinh
         self._tuoi = tuoi
-        self._dtoan = dtoan
-        self._dly = dly
-        self._dhoa = dhoa
-        self._diem_trung_binh = (dtoan + dly + dhoa) / 3
-        if self._diem_trung_binh < 5:
-            self._hoc_luc = "Yếu"
+        self._dtoan = float(dtoan)
+        self._dly = float(dly)
+        self._dhoa = float(dhoa)
+        self._diem_trung_binh = self.tinh_diem_trung_binh()
+        self._hoc_luc = self.tinh_hoc_luc()
+    
+    def tinh_diem_trung_binh(self):
+        return float(self._dtoan + self._dly + self._dhoa) / 3
+    def tinh_hoc_luc(self):
+        if self._diem_trung_binh < 5:   
+            return "Yếu"
         elif 5 <= self._diem_trung_binh < 6.5:
-            self._hoc_luc = "Trung bình"
+            return "Trung bình"
         elif 6.5 <= self._diem_trung_binh < 8:
-            self._hoc_luc = "Khá"
-        elif 8 <= self._diem_trung_binh < 10:
-            self._hoc_luc = "Giỏi"
-        else: 
-            print("Điểm trung bình không hợp lệ")
-            self._hoc_luc = None
+            return "Khá"
+        elif 8 <= self._diem_trung_binh <= 10:
+            return "Giỏi"
+        
+        

@@ -26,19 +26,18 @@ def menu():
             qlsv.them_sinh_vien(ten, gioi_tinh, tuoi, dtoan, dly, dhoa)
         
         elif lua_chon == "2":
-            id = int(input("Nhập ID sinh viên cần cập nhật: "))
-            ten = input("Nhập tên mới (hoặc bỏ qua): ")
-            gioi_tinh = input("Nhập giới tính mới (hoặc bỏ qua): ")
-            tuoi = input("Nhập tuổi mới (hoặc bỏ qua): ")
-            tuoi = int(tuoi) if tuoi else None
-            dtoan = input("Nhập điểm toán mới (hoặc bỏ qua): ")
-            dtoan = float(dtoan) if dtoan else None
-            dly = input("Nhập điểm lý mới (hoặc bỏ qua): ")
-            dly = float(dly) if dly else None
-            dhoa = input("Nhập điểm hóa mới (hoặc bỏ qua): ")
-            dhoa = float(dhoa) if dhoa else None
-            qlsv.cap_nhat_sinh_vien(id, ten if ten else None, gioi_tinh if gioi_tinh else None,
-                                   tuoi, dtoan, dly, dhoa)
+            try:
+                id = int(input("Nhập ID sinh viên cần cập nhật: "))
+            except ValueError:
+                print("ID phải là số.")
+                continue
+            ten = input("Nhập tên mới: ")
+            gioi_tinh = input("Nhập giới tính mới: ")
+            tuoi = input("Nhập tuổi mới: ")
+            dtoan = input("Nhập điểm toán mới: ")
+            dly = input("Nhập điểm lý mới: ")
+            dhoa = input("Nhập điểm hóa mới: ")
+            qlsv.cap_nhat_sinh_vien(id, ten, gioi_tinh, tuoi, dtoan, dly, dhoa)
         
         elif lua_chon == "3":
             id = int(input("Nhập ID sinh viên cần xóa: "))
@@ -49,8 +48,8 @@ def menu():
             ket_qua = qlsv.tim_kiem_sinh_vien(ten)
             if ket_qua:
                 for sv in ket_qua:
-                    print(f"ID: {sv.id}, Tên: {sv.ten}, Giới tính: {sv.gioi_tinh}, Tuổi: {sv.tuoi}, "
-                          f"Điểm TB: {sv.diem_trung_binh:.2f}, Học lực: {sv.hoc_luc}")
+                    print(f"ID: {sv._id}, Tên: {sv._ten}, Giới tính: {sv._gioi_tinh}, Tuổi: {sv._tuoi}, "
+                          f"Điểm TB: {sv._diem_trung_binh:.2f}, Học lực: {sv._hoc_luc}")
             else:
                 print("Không tìm thấy sinh viên.")
 
