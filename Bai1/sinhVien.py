@@ -1,5 +1,5 @@
 class SinhVien:
-    def __init__(self, id, ten, gioi_tinh, tuoi, dtoan, dly, dhoa, davg, hocluc) -> None:
+    def __init__(self, id, ten, gioi_tinh, tuoi, dtoan, dly, dhoa) -> None:
         self._id = id
         self._ten = ten
         self._gioi_tinh = gioi_tinh
@@ -7,8 +7,7 @@ class SinhVien:
         self._dtoan = dtoan
         self._dly = dly
         self._dhoa = dhoa
-        self._davg = davg
-        self._diem_trung_binh = (dtoan + dly + dhoa + davg) / 4
+        self._diem_trung_binh = (dtoan + dly + dhoa) / 3
         if self._diem_trung_binh < 5:
             self._hoc_luc = "Yếu"
         elif 5 <= self._diem_trung_binh < 6.5:
